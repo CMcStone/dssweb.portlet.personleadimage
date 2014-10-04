@@ -34,10 +34,10 @@
                            title obj/Description">
             <img src="" alt=""
                  tal:condition="exists:item_has_leadimage"
-                 tal:replace="structure python:view.tag(item_object, css_class='portletItemDetails')" />
+                 tal:replace="structure python:view.tag(item_object, css_class='portletItemImage image-left')" />
             <img src="" alt=""
                  tal:condition="python: not item_has_leadimage and item_has_image"
-                 tal:replace="structure python:item_object.tag(scale=view.data.scale, css_class='portletItemDetails')" />
+                 tal:replace="structure python:item_object.tag(scale=view.data.scale, css_class='portletItemImage image-left')" />
             <img tal:replace="structure item_icon/html_tag" />
             <span tal:replace="obj/pretty_title_or_id">
              Title
