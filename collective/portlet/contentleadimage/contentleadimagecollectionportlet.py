@@ -44,17 +44,16 @@ class Assignment(collection.Assignment):
 
     implements(IContentLeadImageCollectionPortlet)
 
-    start_dates = False
-    scale = 'thumb'
+        start_dates = False
+        scale = 'thumb'
 
-    def __init__(self, header=u"", target_collection=None, limit=None,
-                 random=False, show_more=True, show_dates=False,
-                 start_dates=False, exclude_context=True, scale='thumb'):
-        super(Assignment, self).__init__(header, target_collection, limit,
-                                         random, show_more, exclude_context, show_dates)
-        self.start_dates = start_dates
-        self.scale = scale
-
+        def __init__(self, header=u"", target_collection=None, limit=None,
+                     random=False, show_more=True, show_dates=False,
+                     start_dates=False, scale='thumb', **kwargs):
+            super(Assignment, self).__init__(header, target_collection, limit,
+                                             random, show_more, show_dates, **kwargs)
+            self.start_dates = start_dates
+            self.scale = scale
 
 class Renderer(collection.Renderer):
     """Portlet renderer.
