@@ -1,5 +1,5 @@
 from zope.i18nmessageid import MessageFactory
-ContentLeadImageCollectionPortletMessageFactory = MessageFactory('collective.portlet.contentleadimage')
+ContentLeadImageCollectionPortletMessageFactory = MessageFactory('collective.portlet.personleadimage')
 
 from Products.CMFCore.permissions import setDefaultRoles
 from plone.portlet.collection import DEFAULT_ADD_CONTENT_PERMISSION 

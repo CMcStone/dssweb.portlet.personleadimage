@@ -17,21 +17,21 @@ def setup_product():
     # Load the ZCML configuration for this package and its dependencies
 
     fiveconfigure.debug_mode = True
-    import collective.portlet.contentleadimage
-    zcml.load_config('configure.zcml', collective.portlet.contentleadimage)
+    import collective.portlet.personleadimage
+    zcml.load_config('configure.zcml', collective.portlet.personleadimage)
     fiveconfigure.debug_mode = False
 
     # We need to tell the testing framework that these products
     # should be available. This can't happen until after we have loaded
     # the ZCML.
 
-    ztc.installPackage('collective.portlet.contentleadimage')
+    ztc.installPackage('collective.portlet.personleadimage')
 
 # The order here is important: We first call the deferred function and then
 # let PloneTestCase install it during Plone site setup
 
 setup_product()
-ptc.setupPloneSite(products=['collective.portlet.contentleadimage'])
+ptc.setupPloneSite(products=['collective.portlet.personleadimage'])
 
 class TestCase(ptc.PloneTestCase):
     """Base class used for test cases

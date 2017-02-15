@@ -1,4 +1,4 @@
-# English translation of collective.portlet.contentleadimage
+# English translation of collective.portlet.personleadimage
 # Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>, 2011.
 msgid ""
 msgstr ""
@@ -15,9 +15,9 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.portlet.contentleadimage\n"
+"Domain: collective.portlet.personleadimage\n"
 
-#: contentleadimagecollectionportlet.py:107
+#: personleadimagecollectionportlet.py:107
 msgid "Add ContentLeadImage Collection Portlet"
 msgstr "Add ContentLeadImage Collection Portlet"
 
@@ -29,11 +29,11 @@ msgstr "Collection portlet that shows content lead images"
 msgid "ContentLeadImage Collection Portlet"
 msgstr "ContentLeadImage Collection Portlet"
 
-#: contentleadimagecollectionportlet.py:122
+#: personleadimagecollectionportlet.py:122
 msgid "Edit ContentLeadImage Collection Portlet"
 msgstr "Edit ContentLeadImage Collection Portlet"
 
-#: contentleadimagecollectionportlet.py:25
+#: personleadimagecollectionportlet.py:25
 msgid ""
 "For event like content start date will be shown instead publication date. "
 "Only applicable if \"Show dates\" is active."
@@ -41,22 +41,22 @@ msgstr ""
 "For event like content start date will be shown instead publication date. "
 "Only applicable if \"Show dates\" is active."
 
-#: contentleadimagecollectionportlet.py:32
+#: personleadimagecollectionportlet.py:32
 msgid "Image scale"
 msgstr "Image scale"
 
-#: contentleadimagecollectionportlet.py:24
+#: personleadimagecollectionportlet.py:24
 msgid "Show start dates"
 msgstr "Show start dates"
 
-#: contentleadimagecollectionportlet.py:33
+#: personleadimagecollectionportlet.py:33
 msgid "The size of the images in the portlet."
 msgstr "The size of the images in the portlet."
 
-#: contentleadimagecollectionportlet.py:108
+#: personleadimagecollectionportlet.py:108
 msgid ""
-"This portlet display a listing of items's contentleadimages from a "
+"This portlet display a listing of items's personleadimages from a "
 "Collection."
 msgstr ""
-"This portlet display a listing of items's contentleadimages from a "
+"This portlet display a listing of items's personleadimages from a "
 "Collection."

@@ -15,9 +15,9 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.portlet.contentleadimage\n"
+"Domain: collective.portlet.personleadimage\n"
 
-#: ./contentleadimagecollectionportlet.py:107
+#: ./personleadimagecollectionportlet.py:107
 msgid "Add ContentLeadImage Collection Portlet"
 msgstr ""
 
@@ -29,27 +29,27 @@ msgstr ""
 msgid "ContentLeadImage Collection Portlet"
 msgstr ""
 
-#: ./contentleadimagecollectionportlet.py:122
+#: ./personleadimagecollectionportlet.py:122
 msgid "Edit ContentLeadImage Collection Portlet"
 msgstr ""
 
-#: ./contentleadimagecollectionportlet.py:25
+#: ./personleadimagecollectionportlet.py:25
 msgid "For event like content start date will be shown instead publication date. Only applicable if \"Show dates\" is active."
 msgstr ""
 
-#: ./contentleadimagecollectionportlet.py:32
+#: ./personleadimagecollectionportlet.py:32
 msgid "Image scale"
 msgstr ""
 
-#: ./contentleadimagecollectionportlet.py:24
+#: ./personleadimagecollectionportlet.py:24
 msgid "Show start dates"
 msgstr ""
 
-#: ./contentleadimagecollectionportlet.py:33
+#: ./personleadimagecollectionportlet.py:33
 msgid "The size of the images in the portlet."
 msgstr ""
 
-#: ./contentleadimagecollectionportlet.py:108
-msgid "This portlet display a listing of items's contentleadimages from a Collection."
+#: ./personleadimagecollectionportlet.py:108
+msgid "This portlet display a listing of items's personleadimages from a Collection."
 msgstr ""
 

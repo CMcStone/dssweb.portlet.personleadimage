@@ -1,4 +1,4 @@
-# Spanish translation of collective.portlet.contentleadimage
+# Spanish translation of collective.portlet.personleadimage
 # Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>, 2011.
 msgid ""
 msgstr ""
@@ -15,9 +15,9 @@ msgstr ""
 "Language-Code: es\n"
 "Language-Name: Spanish\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.portlet.contentleadimage\n"
+"Domain: collective.portlet.personleadimage\n"
 
-#: contentleadimagecollectionportlet.py:107
+#: personleadimagecollectionportlet.py:107
 msgid "Add ContentLeadImage Collection Portlet"
 msgstr "Añadir portlet colección de imágenes de cabecera de contenido"
 
@@ -29,11 +29,11 @@ msgstr "Portlet colección que muestra las imágenes de cabecera de contenido"
 msgid "ContentLeadImage Collection Portlet"
 msgstr "Portlet colección de imágenes de cabecera de contenido"
 
-#: contentleadimagecollectionportlet.py:122
+#: personleadimagecollectionportlet.py:122
 msgid "Edit ContentLeadImage Collection Portlet"
 msgstr "Editar portlet colección de imágenes de cabecera de contenido"
 
-#: contentleadimagecollectionportlet.py:25
+#: personleadimagecollectionportlet.py:25
 msgid ""
 "For event like content start date will be shown instead publication date. "
 "Only applicable if \"Show dates\" is active."
@@ -42,21 +42,21 @@ msgstr ""
 "fecha de publicación. Sólo es aplicable si \"Mostrar fechas\" también "
 "está activo."
 
-#: contentleadimagecollectionportlet.py:32
+#: personleadimagecollectionportlet.py:32
 msgid "Image scale"
 msgstr "Escala de imagen"
 
-#: contentleadimagecollectionportlet.py:24
+#: personleadimagecollectionportlet.py:24
 msgid "Show start dates"
 msgstr "Mostrar fechas de inicio"
 
-#: contentleadimagecollectionportlet.py:33
+#: personleadimagecollectionportlet.py:33
 msgid "The size of the images in the portlet."
 msgstr "Tamaño de las imágenes en el portlet."
 
-#: contentleadimagecollectionportlet.py:108
+#: personleadimagecollectionportlet.py:108
 msgid ""
-"This portlet display a listing of items's contentleadimages from a "
+"This portlet display a listing of items's personleadimages from a "
 "Collection."
 msgstr ""
 "Este portlet muestra un listado de imágenes de cabecera de contenido de los "

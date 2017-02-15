@@ -6,33 +6,49 @@ from zope.formlib import form
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Acquisition import aq_inner
 
-from collective.portlet.contentleadimage import ContentLeadImageCollectionPortletMessageFactory as _
+from collective.portlet.personleadimage import PersonLeadImageCollectionPortletMessageFactory as _
 
 from plone.portlet.collection import collection
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 
-from collective.contentleadimage.config import IMAGE_FIELD_NAME
-from collective.contentleadimage.config import IMAGE_CAPTION_FIELD_NAME
+from collective.personleadimage.config import IMAGE_FIELD_NAME
+from collective.personleadimage.config import IMAGE_CAPTION_FIELD_NAME
 
 
-class IContentLeadImageCollectionPortlet(collection.ICollectionPortlet):
+class IPersonLeadImageCollectionPortlet(collection.ICollectionPortlet):
     """A portlet which renders the results of a collection object, but
-    displaying the contentleadimages.
+    displaying the personleadimages.
     """
-
-    start_dates = schema.Bool(
-        title=_(u"Show start dates"),
-        description=_(u'For event like content start date will be shown '\
-                       'instead publication date. Only applicable if '\
-                       '"Show dates" is active.'),
+    show_title = schema.Bool(
+        title=_(u"Show person's title information"),
+        description=_(u'this will show title'),
+        default=True,
+        required=False)
+        
+    contact_info = schema.Bool(
+        title=_(u"Show Contact Information"),
+        description=_(u'this will show phone and office address'),
         default=False,
         required=False)
+    
+    email = schema.Bool(
+        title=_(u"Show Email Information"),
+        description=_(u'this will show email address'),
+        default=False,
+        required=False)
+        
+    office_hours = schema.Bool(
+        titlee=_(u"Show Office Hours"),
+        description=_(u'this will show office hours'),
+        default=False,
+        required=False)
+
 
     scale = schema.Choice(
         title=_(u"Image scale"),
         description=_(u"The size of the images in the portlet."),
         default='thumb',
-        vocabulary = u"collective.contentleadimage.scales_vocabulary")
+        vocabulary = u"collective.personleadimage.scales_vocabulary")
 
 
 class Assignment(collection.Assignment):
@@ -42,17 +58,23 @@ class Assignment(collection.Assignment):
     with columns.
     """
 
-    implements(IContentLeadImageCollectionPortlet)
+    implements(IPersonLeadImageCollectionPortlet)
 
-    start_dates = False
+    contact_information = False
+    office_hours = False
+    email = False
+    show_title = False
     scale = 'thumb'
 
     def __init__(self, header=u"", target_collection=None, limit=None,
-            random=False, show_more=True, show_dates=False,
-            start_dates=False, scale='thumb', **kwargs):
+            random=False, show_more=True, contace_information=False, email=False, show_title=False,
+            office_hours=False, scale='thumb', **kwargs):
         super(Assignment, self).__init__(header, target_collection, limit,
                                              random, show_more, show_dates, **kwargs)
-        self.start_dates = start_dates
+        self.contact_information = contact_information
+        self.office_hours = office_hours
+        self.email = email
+        self.show_title = show_title
         self.scale = scale
 
 class Renderer(collection.Renderer):
@@ -63,8 +85,8 @@ class Renderer(collection.Renderer):
     of this class. Other methods can be added and referenced in the template.
     """
 
-    #_template = ViewPageTemplateFile('contentleadimagecollectionportlet.pt')
-    render = ViewPageTemplateFile('contentleadimagecollectionportlet.pt')
+    #_template = ViewPageTemplateFile('personleadimagecollectionportlet.pt')
+    render = ViewPageTemplateFile('personleadimagecollectionportlet.pt')
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
@@ -100,11 +122,11 @@ class AddForm(base.AddForm):
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
-    form_fields = form.Fields(IContentLeadImageCollectionPortlet)
+    form_fields = form.Fields(IPersonLeadImageCollectionPortlet)
     form_fields['target_collection'].custom_widget = UberSelectionWidget
 
-    label = _(u"Add ContentLeadImage Collection Portlet")
-    description = _(u"This portlet display a listing of items's contentleadimages from a Collection.")
+    label = _(u"Add PersonLeadImage Collection Portlet")
+    description = _(u"This portlet displays a listing of people from a collection with various metadata.")
 
     def create(self, data):
         return Assignment(**data)
@@ -115,8 +137,8 @@ class EditForm(base.EditForm):
     This is registered with configure.zcml. The form_fields variable tells
     zope.formlib which fields to display.
     """
-    form_fields = form.Fields(IContentLeadImageCollectionPortlet)
+    form_fields = form.Fields(IPersonLeadImageCollectionPortlet)
     form_fields['target_collection'].custom_widget = UberSelectionWidget
 
-    label = _(u"Edit ContentLeadImage Collection Portlet")
-    description = _(u"This portlet display a listing of items's contentleadimages from a Collection.")
+    label = _(u"Edit PersonLeadImage Collection Portlet")
+    description = _(u"This portlet displays a listing of people from a collection with various metadata.")

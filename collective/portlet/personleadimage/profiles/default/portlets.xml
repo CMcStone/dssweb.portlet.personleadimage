@@ -4,9 +4,9 @@
     i18n:domain="plone">
 
  <portlet
-   addview="collective.portlet.contentleadimage.ContentLeadImageCollectionPortlet"
-   title="ContentLeadImage Collection Portlet"
-   description="Collection portlet that shows content lead images"
+   addview="collective.portlet.personleadimage.PersonLeadImageCollectionPortlet"
+   title="PersonLeadImage Collection Portlet"
+   description="Collection portlet that shows person lead images"
    i18n:attributes="title;
                     description"
    />

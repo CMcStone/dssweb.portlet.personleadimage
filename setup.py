@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.5.2.dev0'
+version = '0.01'
 
-setup(name='collective.portlet.contentleadimage',
+setup(name='collective.portlet.personleadimage',
       version=version,
-      description="Collection portlet that shows contenteleadimages",
+      description="Collection portlet that shows personleadimages",
       long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -17,9 +17,9 @@ setup(name='collective.portlet.contentleadimage',
         "License :: OSI Approved :: GNU General Public License (GPL)",
         ],
       keywords='',
-      author='Ales Zabala Alava (Shagi)',
-      author_email='shagi@gisa-elkartea.org',
-      url='http://github.com/collective/collective.portlet.contentleadimage',
+      author='Carol McMasters-Stone',
+      author_email='cbeck@ucdavis.edu',
+      url='http://github.com/CMcStone/collective.portlet.personleadimage',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective', 'collective.portlet'],

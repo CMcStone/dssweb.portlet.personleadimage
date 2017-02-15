@@ -1,4 +1,4 @@
-# English translation of collective.portlet.contentleadimage
+# English translation of collective.portlet.personleadimage
 # Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>, 2011.
 msgid ""
 msgstr ""

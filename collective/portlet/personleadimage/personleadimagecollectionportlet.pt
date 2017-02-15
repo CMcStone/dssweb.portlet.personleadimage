@@ -1,5 +1,5 @@
 <dl class="portlet portletContentLeadImageCollectionPortlet"
-    i18n:domain="collective.portlet.contentleadimage"
+    i18n:domain="collective.portlet.personleadimage"
     tal:define="collection_url view/collection_url;
                 plone_view context/@@plone;
                 toLocalizedTime nocall:plone_view/toLocalizedTime;

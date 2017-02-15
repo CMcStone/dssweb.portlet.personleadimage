@@ -10,12 +10,12 @@ from plone.portlets.interfaces import IPortletRenderer
 
 from plone.app.portlets.storage import PortletAssignmentMapping
 
-from collective.portlet.contentleadimage import contentleadimagecollectionportlet
+from collective.portlet.personleadimage import personleadimagecollectionportlet
 
-from collective.portlet.contentleadimage.tests.base import TestCase
+from collective.portlet.personleadimage.tests.base import TestCase
 
-from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
-from collective.contentleadimage.config import IMAGE_FIELD_NAME
+from collective.personleadimage.leadimageprefs import ILeadImagePrefsForm
+from collective.personleadimage.config import IMAGE_FIELD_NAME
 from Products.CMFCore.utils import getToolByName
 
 
@@ -27,19 +27,19 @@ class TestPortlet(TestCase):
     def test_portlet_type_registered(self):
         portlet = getUtility(
             IPortletType,
-            name='collective.portlet.contentleadimage.ContentLeadImageCollectionPortlet')
+            name='collective.portlet.personleadimage.ContentLeadImageCollectionPortlet')
         self.assertEquals(portlet.addview,
-                          'collective.portlet.contentleadimage.ContentLeadImageCollectionPortlet')
+                          'collective.portlet.personleadimage.ContentLeadImageCollectionPortlet')
 
     def test_interfaces(self):
-        portlet = contentleadimagecollectionportlet.Assignment(header=u"title")
+        portlet = personleadimagecollectionportlet.Assignment(header=u"title")
         self.failUnless(IPortletAssignment.providedBy(portlet))
         self.failUnless(IPortletDataProvider.providedBy(portlet.data))
 
     def test_invoke_add_view(self):
         portlet = getUtility(
             IPortletType,
-            name='collective.portlet.contentleadimage.ContentLeadImageCollectionPortlet')
+            name='collective.portlet.personleadimage.ContentLeadImageCollectionPortlet')
         mapping = self.portal.restrictedTraverse(
             '++contextportlets++plone.leftcolumn')
         for m in mapping.keys():
@@ -50,15 +50,15 @@ class TestPortlet(TestCase):
 
         self.assertEquals(len(mapping), 1)
         self.failUnless(isinstance(mapping.values()[0],
-                                   contentleadimagecollectionportlet.Assignment))
+                                   personleadimagecollectionportlet.Assignment))
 
     def test_invoke_edit_view(self):
         mapping = PortletAssignmentMapping()
         request = self.folder.REQUEST
 
-        mapping['foo'] = contentleadimagecollectionportlet.Assignment(header=u"title")
+        mapping['foo'] = personleadimagecollectionportlet.Assignment(header=u"title")
         editview = getMultiAdapter((mapping['foo'], request), name='edit')
-        self.failUnless(isinstance(editview, contentleadimagecollectionportlet.EditForm))
+        self.failUnless(isinstance(editview, personleadimagecollectionportlet.EditForm))
 
     def test_obtain_renderer(self):
         context = self.folder
@@ -66,11 +66,11 @@ class TestPortlet(TestCase):
         view = self.folder.restrictedTraverse('@@plone')
         manager = getUtility(IPortletManager, name='plone.rightcolumn',
                              context=self.portal)
-        assignment = contentleadimagecollectionportlet.Assignment(header=u"title")
+        assignment = personleadimagecollectionportlet.Assignment(header=u"title")
 
         renderer = getMultiAdapter(
             (context, request, view, manager, assignment), IPortletRenderer)
-        self.failUnless(isinstance(renderer, contentleadimagecollectionportlet.Renderer))
+        self.failUnless(isinstance(renderer, personleadimagecollectionportlet.Renderer))
 
 
 class TestRenderer(TestCase):
@@ -82,7 +82,7 @@ class TestRenderer(TestCase):
         crit = self.collection.addCriterion('portal_type', 'ATSimpleStringCriterion')
         crit.setValue('Folder')
 
-        #Ensure folders can have contentleadimages
+        #Ensure folders can have personleadimages
         self.loginAsPortalOwner()
         prefs = ILeadImagePrefsForm(self.portal)
         types = list(prefs.allowed_types)
@@ -94,7 +94,7 @@ class TestRenderer(TestCase):
 
         # add a folder
         folder1 = self._createType(self.folder, 'Folder', 'folder_1')
-        #Add contentleadimage to folder
+        #Add personleadimage to folder
         test_image = os.path.join(os.path.dirname(__file__), 'test_41x41.jpg')
         raw_image = open(test_image, 'rb').read()
         field = folder1.getField(IMAGE_FIELD_NAME)
@@ -121,13 +121,13 @@ class TestRenderer(TestCase):
         manager = manager or getUtility(
             IPortletManager, name='plone.rightcolumn', context=self.portal)
 
-        assignment = assignment or contentleadimagecollectionportlet.Assignment(header=u"title")
+        assignment = assignment or personleadimagecollectionportlet.Assignment(header=u"title")
         return getMultiAdapter((context, request, view, manager, assignment),
                                IPortletRenderer)
 
     def test_render(self):
         r = self.renderer(context=self.portal,
-                          assignment=contentleadimagecollectionportlet.Assignment(header=u"title",
+                          assignment=personleadimagecollectionportlet.Assignment(header=u"title",
                                                                                   target_collection='/Members/test_user_1_/collection'))
         r = r.__of__(self.folder)
         r.update()
@@ -146,7 +146,7 @@ class TestRenderer(TestCase):
         folder_brain = catalog(id='folder_1')[0]
 
         r = self.renderer(context=self.portal,
-                          assignment=contentleadimagecollectionportlet.Assignment(header=u"title",
+                          assignment=personleadimagecollectionportlet.Assignment(header=u"title",
                                                                                   start_dates=True,
                                                                                   target_collection='/Members/test_user_1_/collection'))
         r = r.__of__(self.folder)
@@ -157,7 +157,7 @@ class TestRenderer(TestCase):
         self.assertEqual(folder_brain.Date, shown_date)
 
         r = self.renderer(context=self.portal,
-                          assignment=contentleadimagecollectionportlet.Assignment(header=u"title",
+                          assignment=personleadimagecollectionportlet.Assignment(header=u"title",
                                                                                   start_dates=False,
                                                                                   target_collection='/Members/test_user_1_/collection'))
         r = r.__of__(self.folder)
@@ -180,7 +180,7 @@ class TestRenderer(TestCase):
         crit = self.collection.listCriteria()[0]
         crit.setValue('News Item')
         r = self.renderer(context=self.portal,
-                          assignment=contentleadimagecollectionportlet.Assignment(header=u"title",
+                          assignment=personleadimagecollectionportlet.Assignment(header=u"title",
                                                                                   target_collection='/Members/test_user_1_/collection'))
         r = r.__of__(self.folder)
         r.update()
@@ -195,7 +195,7 @@ class TestRenderer(TestCase):
         crit = self.collection.listCriteria()[0]
         crit.setValue('News Item')
         r = self.renderer(context=self.portal,
-                          assignment=contentleadimagecollectionportlet.Assignment(header=u"title",
+                          assignment=personleadimagecollectionportlet.Assignment(header=u"title",
                                                                                   target_collection='/Members/test_user_1_/collection'))
         r = r.__of__(self.folder)
         r.update()
@@ -205,7 +205,7 @@ class TestRenderer(TestCase):
     def test_image_scales(self):
         #default scale size is thumb
         r = self.renderer(context=self.portal,
-                          assignment=contentleadimagecollectionportlet.Assignment(header=u"title",
+                          assignment=personleadimagecollectionportlet.Assignment(header=u"title",
                                                                                   target_collection='/Members/test_user_1_/collection'))
         r = r.__of__(self.folder)
         r.update()
@@ -213,7 +213,7 @@ class TestRenderer(TestCase):
         self.failUnless('_thumb' in output)
 
         r = self.renderer(context=self.portal,
-                          assignment=contentleadimagecollectionportlet.Assignment(header=u"title",
+                          assignment=personleadimagecollectionportlet.Assignment(header=u"title",
                                                                                   scale='tile',
                                                                                   target_collection='/Members/test_user_1_/collection'))
         r = r.__of__(self.folder)
