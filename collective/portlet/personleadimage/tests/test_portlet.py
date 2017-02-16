@@ -14,8 +14,8 @@ from collective.portlet.personleadimage import personleadimagecollectionportlet
 
 from collective.portlet.personleadimage.tests.base import TestCase
 
-from collective.personleadimage.leadimageprefs import ILeadImagePrefsForm
-from collective.personleadimage.config import IMAGE_FIELD_NAME
+from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
+from collective.contentleadimage.config import IMAGE_FIELD_NAME
 from Products.CMFCore.utils import getToolByName
 
 

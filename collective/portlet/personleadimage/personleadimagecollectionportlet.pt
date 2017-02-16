@@ -42,11 +42,11 @@
             <span tal:replace="obj/pretty_title_or_id">
              Title
             </span>
-            <span class="portletItemDetails"
+            <!--span class="portletItemDetails"
                   tal:condition="view/data/show_dates"
                   tal:content="python:toLocalizedTime(view.object_date(obj))">
                 Date
-            </span>
+            </span-->
         </a>
     </dd>
     </tal:events>

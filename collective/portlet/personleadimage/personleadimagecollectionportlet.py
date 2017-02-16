@@ -10,15 +10,17 @@ from collective.portlet.personleadimage import PersonLeadImageCollectionPortletM
 
 from plone.portlet.collection import collection
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
+from Products.FacultyStaffDirectory import vocab
 
-from collective.personleadimage.config import IMAGE_FIELD_NAME
-from collective.personleadimage.config import IMAGE_CAPTION_FIELD_NAME
+from collective.contentleadimage.config import IMAGE_FIELD_NAME
+from collective.contentleadimage.config import IMAGE_CAPTION_FIELD_NAME
 
 
 class IPersonLeadImageCollectionPortlet(collection.ICollectionPortlet):
     """A portlet which renders the results of a collection object, but
     displaying the personleadimages.
     """
+   
     show_title = schema.Bool(
         title=_(u"Show person's title information"),
         description=_(u'this will show title'),
@@ -38,17 +40,16 @@ class IPersonLeadImageCollectionPortlet(collection.ICollectionPortlet):
         required=False)
         
     office_hours = schema.Bool(
-        titlee=_(u"Show Office Hours"),
+        title=_(u"Show Office Hours"),
         description=_(u'this will show office hours'),
         default=False,
         required=False)
-
 
     scale = schema.Choice(
         title=_(u"Image scale"),
         description=_(u"The size of the images in the portlet."),
         default='thumb',
-        vocabulary = u"collective.personleadimage.scales_vocabulary")
+        vocabulary = u"collective.contentleadimage.scales_vocabulary")
 
 
 class Assignment(collection.Assignment):
@@ -60,18 +61,18 @@ class Assignment(collection.Assignment):
 
     implements(IPersonLeadImageCollectionPortlet)
 
-    contact_information = False
+    contact_info = False
     office_hours = False
     email = False
     show_title = False
     scale = 'thumb'
 
     def __init__(self, header=u"", target_collection=None, limit=None,
-            random=False, show_more=True, contace_information=False, email=False, show_title=False,
+            random=False, show_more=True, contact_info=False, email=False, show_title=False,
             office_hours=False, scale='thumb', **kwargs):
         super(Assignment, self).__init__(header, target_collection, limit,
-                                             random, show_more, show_dates, **kwargs)
-        self.contact_information = contact_information
+                                             random, show_more, **kwargs)
+        self.contact_info = contact_info
         self.office_hours = office_hours
         self.email = email
         self.show_title = show_title
@@ -103,16 +104,6 @@ class Renderer(collection.Renderer):
             if field.get_size(context) != 0:
                 return field.tag(context, scale=self.data.scale, css_class=css_class, title=title)
         return ''
-
-    def object_date(self, brain):
-        """ Return the appropiate date to show """
-
-        date = None
-        if self.data.start_dates:
-            date =  brain.start or brain.Date
-        else:
-            date = brain.Date
-        return date
 
 
 class AddForm(base.AddForm):
