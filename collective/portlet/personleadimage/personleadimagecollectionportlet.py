@@ -1,4 +1,5 @@
 from zope.interface import implements
+from Products.CMFCore.utils import getToolByName
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 from zope import schema
@@ -68,15 +69,16 @@ class Assignment(collection.Assignment):
     scale = 'thumb'
 
     def __init__(self, header=u"", target_collection=None, limit=None,
-            random=False, show_more=True, contact_info=False, email=False, show_title=False,
-            office_hours=False, scale='thumb', **kwargs):
+            random=False, show_more=False, contact_info=False, email=False, show_title=False,
+            office_hours=False, show_dates=False, scale='thumb', **kwargs):
         super(Assignment, self).__init__(header, target_collection, limit,
-                                             random, show_more, **kwargs)
+                                             random, show_more, show_dates, **kwargs)
         self.contact_info = contact_info
         self.office_hours = office_hours
         self.email = email
         self.show_title = show_title
         self.scale = scale
+        
 
 class Renderer(collection.Renderer):
     """Portlet renderer.
@@ -91,6 +93,7 @@ class Renderer(collection.Renderer):
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
+        
 
     def tag(self, obj, css_class='tileImage'):
         context = aq_inner(obj)
@@ -104,7 +107,24 @@ class Renderer(collection.Renderer):
             if field.get_size(context) != 0:
                 return field.tag(context, scale=self.data.scale, css_class=css_class, title=title)
         return ''
+        
+    def getObjectByUID(self, UID):
+        """
+            find the object with this UID
+        """
+        catalog = getToolByName(self, 'portal_catalog')
+        brains = catalog(UID=UID)
+        return brains[0].getObject()
 
+    def getQueryDepartment(self):
+        target_collection = self.collection()
+        results = target_collection.getRawQuery()
+        for s in results:
+            if 'getRawDepartments' in s['i']:
+                dept_uid = s['v']
+                if dept_uid:
+                    return self.getObjectByUID(dept_uid)
+                return None
 
 class AddForm(base.AddForm):
     """Portlet add form.
@@ -113,8 +133,10 @@ class AddForm(base.AddForm):
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
+    
     form_fields = form.Fields(IPersonLeadImageCollectionPortlet)
     form_fields['target_collection'].custom_widget = UberSelectionWidget
+    form_fields.omit('show_dates')
 
     label = _(u"Add PersonLeadImage Collection Portlet")
     description = _(u"This portlet displays a listing of people from a collection with various metadata.")

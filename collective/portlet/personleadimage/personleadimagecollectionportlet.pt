@@ -1,12 +1,13 @@
-<dl class="portlet portletContentLeadImageCollectionPortlet"
+<dl class="portlet portletPersonLeadImageCollectionPortlet"
     i18n:domain="collective.portlet.personleadimage"
     tal:define="collection_url view/collection_url;
                 plone_view context/@@plone;
                 toLocalizedTime nocall:plone_view/toLocalizedTime;
                 viewActions here/portal_properties/site_properties/typesUseViewActionInListings|python:();
                 getIcon nocall:plone_view/getIcon;
+					 department view/getQueryDepartment;
                 portlet_id context/data/id|string:id1"
-    tal:attributes="class string:portlet portletContentLeadImageCollectionPortlet ${portlet_id}">
+    tal:attributes="class string:portlet portletPersonLeadImageCollectionPortlet ${portlet_id}">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -25,6 +26,8 @@
                     item_has_leadimage obj/hasContentLeadImage;
                     item_object obj/getObject;
                     item_has_image exists:item_object/image;
+						  person_email python:item_object.getEmail();
+						  personMembership python:department.getMembershipInformation(item_object)
                     "
 
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
@@ -36,18 +39,27 @@
                  tal:condition="exists:item_has_leadimage"
                  tal:replace="structure python:view.tag(item_object, css_class='portletItemDetails image-left')" />
             <img src="" alt=""
+					   tal:define="scales context/@@images"
                  tal:condition="python: not item_has_leadimage and item_has_image"
                  tal:replace="structure python:item_object.tag(scale=view.data.scale, css_class='portletItemDetails image-left')" />
             <img tal:replace="structure item_icon/html_tag" />
-            <span tal:replace="obj/pretty_title_or_id">
-             Title
-            </span>
-            <!--span class="portletItemDetails"
-                  tal:condition="view/data/show_dates"
-                  tal:content="python:toLocalizedTime(view.object_date(obj))">
-                Date
-            </span-->
+				<span tal:replace="item_object/Title">
+				             Title
+				            </span>
         </a>
+        <div class="portlet caption" tal:condition="python:department is not None">
+          <!-- setting to primary department for demo purposes -->
+          <tal:block>
+            <p class="job"
+              tal:condition="personMembership/getPosition | nothing"
+              tal:content="personMembership/getPosition"
+            />
+            <p class="phone-wrapper">
+			   <a class="tile-email" tal:attributes="href string:mailto:${person_email}" tal:content="structure person_email" />
+				<br>
+				 
+              <span tal:condition="personMembership/getDept_officePhone | nothing" tal:replace="structure personMembership/getDept_officePhone"></span></tal:block>
+			  </div>
     </dd>
     </tal:events>
 
