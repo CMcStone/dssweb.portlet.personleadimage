@@ -7,7 +7,7 @@
                 getIcon nocall:plone_view/getIcon;
 					 department view/getQueryDepartment;
                 portlet_id context/data/id|string:id1"
-    tal:attributes="class string:portlet portletPersonLeadImageCollectionPortlet ${portlet_id}">
+    tal:attributes="class string:portlet personContentLeadImageCollectionPortlet portletPersonLeadImage ${portlet_id}">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
