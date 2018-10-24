@@ -55,7 +55,7 @@
               tal:content="personMembership/getPosition"
             />
             <p class="phone-wrapper">
-			   <a class="tile-email" tal:attributes="href string:mailto:${person_email}" tal:content="structure person_email" />
+			   <a class="tile-email" tal:condition:"view/data/show_email" tal:attributes="href string:mailto:${person_email}" tal:content="structure person_email" />
 				<br>
 				 
               <span tal:condition="personMembership/getDept_officePhone | nothing" tal:replace="structure personMembership/getDept_officePhone"></span></tal:block>
