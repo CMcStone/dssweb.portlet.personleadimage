@@ -6,4 +6,4 @@ personleadimages and the title and description of a person. If the item has no l
 image but has a image field (like News Items, for example) then this field
 is displayed.
 
-This is taken from collective.portlet.personleadimage
+This is taken from collective.portlet.contentleadimage
