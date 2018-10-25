@@ -3,7 +3,7 @@ import os
 
 version = '0.01'
 
-setup(name='collective.portlet.personleadimage',
+setup(name='dssweb.portlet.personleadimage',
       version=version,
       description="Collection portlet that shows personleadimages",
       long_description=open("README.rst").read() + "\n" +
@@ -19,10 +19,10 @@ setup(name='collective.portlet.personleadimage',
       keywords='',
       author='Carol McMasters-Stone',
       author_email='cbeck@ucdavis.edu',
-      url='http://github.com/CMcStone/collective.portlet.personleadimage',
+      url='http://github.com/CMcStone/dssweb.portlet.personleadimage',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['collective', 'collective.portlet'],
+      namespace_packages=['dssweb', 'dssweb.portlet'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[

@@ -15,7 +15,7 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.portlet.personleadimage\n"
+"Domain: dssweb.portlet.personleadimage\n"
 
 #: ZCML
 msgid "Collection portlet that shows content lead images"

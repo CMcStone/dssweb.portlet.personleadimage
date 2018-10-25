@@ -4,7 +4,7 @@
     i18n:domain="plone">
 
  <portlet
-   addview="collective.portlet.personleadimage.PersonLeadImageCollectionPortlet"
+   addview="dssweb.portlet.personleadimage.PersonLeadImageCollectionPortlet"
    title="PersonLeadImage Collection Portlet"
    description="Collection portlet that shows person lead images"
    i18n:attributes="title;

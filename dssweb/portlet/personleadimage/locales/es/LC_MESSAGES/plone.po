@@ -1,4 +1,4 @@
-# English translation of collective.portlet.personleadimage
+# Spanish translation of dssweb.portlet.personleadimage
 # Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>, 2011.
 msgid ""
 msgstr ""
@@ -12,15 +12,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 
 #: ZCML
 msgid "Collection portlet that shows content lead images"
-msgstr "Collection portlet that shows content lead images"
+msgstr "Portlet colección que muestra las imágenes de cabecera de contenido"
 
 #: ZCML
 msgid "ContentLeadImage Collection Portlet"
-msgstr "ContentLeadImage Collection Portlet"
+msgstr "Portlet colección de imagenes de cabecera de contenido"

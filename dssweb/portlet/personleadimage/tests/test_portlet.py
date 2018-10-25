@@ -10,9 +10,9 @@ from plone.portlets.interfaces import IPortletRenderer
 
 from plone.app.portlets.storage import PortletAssignmentMapping
 
-from collective.portlet.personleadimage import personleadimagecollectionportlet
+from dssweb.portlet.personleadimage import personleadimagecollectionportlet
 
-from collective.portlet.personleadimage.tests.base import TestCase
+from dssweb.portlet.personleadimage.tests.base import TestCase
 
 from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
 from collective.contentleadimage.config import IMAGE_FIELD_NAME
@@ -27,9 +27,9 @@ class TestPortlet(TestCase):
     def test_portlet_type_registered(self):
         portlet = getUtility(
             IPortletType,
-            name='collective.portlet.personleadimage.ContentLeadImageCollectionPortlet')
+            name='dssweb.portlet.personleadimage.ContentLeadImageCollectionPortlet')
         self.assertEquals(portlet.addview,
-                          'collective.portlet.personleadimage.ContentLeadImageCollectionPortlet')
+                          'dssweb.portlet.personleadimage.ContentLeadImageCollectionPortlet')
 
     def test_interfaces(self):
         portlet = personleadimagecollectionportlet.Assignment(header=u"title")
@@ -39,7 +39,7 @@ class TestPortlet(TestCase):
     def test_invoke_add_view(self):
         portlet = getUtility(
             IPortletType,
-            name='collective.portlet.personleadimage.ContentLeadImageCollectionPortlet')
+            name='dssweb.portlet.personleadimage.ContentLeadImageCollectionPortlet')
         mapping = self.portal.restrictedTraverse(
             '++contextportlets++plone.leftcolumn')
         for m in mapping.keys():

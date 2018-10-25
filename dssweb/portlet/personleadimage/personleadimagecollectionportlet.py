@@ -7,7 +7,7 @@ from zope.formlib import form
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Acquisition import aq_inner
 
-from collective.portlet.personleadimage import PersonLeadImageCollectionPortletMessageFactory as _
+from dssweb.portlet.personleadimage import PersonLeadImageCollectionPortletMessageFactory as _
 
 from plone.portlet.collection import collection
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
