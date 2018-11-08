@@ -32,7 +32,7 @@
 
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
         <a href="#"
-           class="tile"
+           class="pname tile"
            tal:attributes="href itemUrl;
                            title obj/Description">
             <img src="" alt=""
@@ -47,19 +47,32 @@
 				             Title
 				            </span>
         </a>
-        <div class="portlet caption" tal:condition="python:department is not None">
+        <div class="portlet" tal:condition="python:department is not None">
           <!-- setting to primary department for demo purposes -->
           <tal:block>
-            <p class="job"
-              tal:condition="personMembership/getPosition | nothing"
-              tal:content="personMembership/getPosition"
-            />
-            <p class="phone-wrapper">
-			   <a class="tile-email" tal:condition:"view/data/show_email" tal:attributes="href string:mailto:${person_email}" tal:content="structure person_email" />
-				<br>
-				 
-              <span tal:condition="personMembership/getDept_officePhone | nothing" tal:replace="structure personMembership/getDept_officePhone"></span></tal:block>
+            <p>
+              <span tal:omit-tag tal:condition="view/data/show_title">
+				  <span class="job" tal:condition="personMembership/getPosition"
+              tal:content="personMembership/getPosition | nothing"/>
+              
+			</span>
+            <span class="phone-wrapper">
+			   <a class="tile-email" tal:condition="view/data/email" tal:attributes="href string:mailto:${person_email}" tal:content="structure person_email" />
+				<br/>
+			 <span tal:omit-tag tal:condition="view/data/contact_info">	 
+              <span tal:condition="personMembership/getDept_officePhone | nothing" tal:replace="structure personMembership/getDept_officePhone"></span>
+		  </span> 
+	  </span>
+	  <span class="office-hours">
+		  <span tal:omit-tag tal:condition="view/data/office_hours">
+			  
+	  </span>
+  </span>  
+	  </p>
+		  
+		  </tal:block>
 			  </div>
+			  
     </dd>
     </tal:events>
 

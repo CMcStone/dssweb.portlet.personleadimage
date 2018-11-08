@@ -48,7 +48,7 @@ class IPersonLeadImageCollectionPortlet(collection.ICollectionPortlet):
 
     scale = schema.Choice(
         title=_(u"Image scale"),
-        description=_(u"The size of the images in the portlet."),
+        description=_(u"The size of the images in the portlet. Don't change this!"),
         default='thumb',
         vocabulary = u"collective.contentleadimage.scales_vocabulary")
 
