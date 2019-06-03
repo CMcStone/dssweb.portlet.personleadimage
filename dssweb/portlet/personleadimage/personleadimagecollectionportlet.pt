@@ -62,13 +62,21 @@
 			 <span tal:omit-tag tal:condition="view/data/contact_info">	 
               <span tal:condition="personMembership/getDept_officePhone | nothing" tal:replace="structure personMembership/getDept_officePhone"></span>
 		  </span> 
-	  </span>
-	  <span class="office-hours">
-		  <span tal:omit-tag tal:condition="view/data/office_hours">
-			  
-	  </span>
-  </span>  
-	  </p>
+	  </span></p>
+      <div class="office-hours"            tal:condition="personMembership/getOfficeHours">
+	   <p class="office-hours">Office Hours: <span tal:replace="personMembership/getQuarter">Quarter</span><br/>
+	<span tal:define="officeHours personMembership/getOfficeHours" tal:condition="personMembership/getOfficeHours">
+          	 
+               <span class="oh-text "><span tal:omit-tag="" tal:replace="python:' | '.join(officeHours)">
+						  
+							 Office Hours 
+						 </span>
+						 </span>
+					 </span>
+							
+						</p>
+	 
+ </div>
 		  
 		  </tal:block>
 			  </div>
